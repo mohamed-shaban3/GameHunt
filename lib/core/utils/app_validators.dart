@@ -1,32 +1,47 @@
+import '../constants/app_strings.dart';
 import 'app_regex.dart';
 
 class AppValidators {
+  // 1. Email Validation
   static String? validateEmail(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Please enter your email';
+      return AppStrings.pleaseEnterEmail;
     }
     if (!AppRegex.isEmailValid(value.trim())) {
-      return 'Please enter a valid email address';
+      return AppStrings.invalidEmail;
     }
     return null;
   }
 
+  // 2. Password Validation
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your password';
+      return AppStrings.pleaseEnterPassword;
     }
     if (!AppRegex.isHasMinLength(value)) {
-      return 'Password must be at least 6 characters';
+      return AppStrings.passwordTooShort;
     }
     return null;
   }
 
+  // 3. OTP Validation
   static String? validateOtp(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Please enter the verification code';
+      return AppStrings.pleaseEnterOtp;
     }
     if (value.trim().length < 6) {
-      return 'Code must be 6 digits';
+      return AppStrings.invalidOtpLength;
+    }
+    return null;
+  }
+
+  // 4. Confirm Password Validation
+  static String? validateConfirmPassword(String? value, String password) {
+    if (value == null || value.isEmpty) {
+      return AppStrings.pleaseConfirmPassword;
+    }
+    if (value != password) {
+      return AppStrings.passwordsDoNotMatch;
     }
     return null;
   }

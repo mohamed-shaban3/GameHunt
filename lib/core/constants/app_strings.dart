@@ -12,6 +12,8 @@ class AppStrings {
   static const String emailVerifiedSuccessfully = 'Email verified successfully!';
   static const String accountVerifiedSuccessfully = 'Account verified successfully!';
   static const String invalidOtpCode = 'Verification code is incorrect';
+  static const String invalidEmail = 'Please enter a valid email address';
+  static const String invalidOtpLength = 'Code must be 6 digits';
 
   // Screen strings
   static const String welcomeBack = 'Welcome back, please sign in to continue';
@@ -35,4 +37,12 @@ class AppStrings {
   static const String otpSentTo = 'Verification code has been sent to:\n';
   static const String otpCode = 'Verification Code (OTP)';
   static const String verifyCode = 'Verify Code';
+
+  static const String appSubtitle = 'Explore the gaming universe';
+  static const String searchHint = 'Search games, genres, news...';
+  static const String featured = 'FEATURED';
+  static const String trendingNow = 'Trending Now';
+  static const String seeAll = 'See All';
+  static const String allGames = 'All Games';
+  static const String noGamesFound = 'No games found';
 }

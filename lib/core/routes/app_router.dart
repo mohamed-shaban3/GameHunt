@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gamehunt/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:gamehunt/features/auth/presentation/ui/login_screen.dart';
-import 'package:gamehunt/features/auth/presentation/ui/otp_verification_screen.dart';
-import 'package:gamehunt/features/auth/presentation/ui/register_screen.dart';
+import 'package:gamehunt/features/auth/presentation/ui/screens/login_screen.dart';
+import 'package:gamehunt/features/auth/presentation/ui/screens/otp_verification_screen.dart';
+import 'package:gamehunt/features/auth/presentation/ui/screens/register_screen.dart';
+import 'package:gamehunt/features/games/presentation/cubit/games_cubit.dart';
 import 'app_routes.dart';
-import '../../features/games/presentation/ui/games_screen.dart';
-
-// تأكد من استدعاء ملف الـ DI الذي يحتوي على getIt
-import '../di/service_locator.dart'; 
+import '../../features/games/presentation/ui/screens/games_screen.dart';
+import '../di/service_locator.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -40,15 +39,16 @@ class AppRouter {
 
       case AppRoutes.gamesScreen:
         return MaterialPageRoute(
-          builder: (_) => const GamesScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<GamesCubit>()..getGames(),
+            child: const GamesScreen(),
+          ),
         );
 
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
-              child: Text('No route defined for ${settings.name}'),
-            ),
+            body: Center(child: Text('No route defined for ${settings.name}')),
           ),
         );
     }

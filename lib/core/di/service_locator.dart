@@ -6,7 +6,7 @@ import '../networking/dio_factory.dart';
 import '../networking/api_service.dart';
 import '../../features/games/data/repo/games_repo.dart';
 import '../../features/games/presentation/cubit/games_cubit.dart';
-import '../../features/auth/data/repo/auth_repo.dart';
+import '../../features/auth/data/repos/auth_repo.dart';
 import '../../features/auth/presentation/cubit/auth_cubit.dart';
 
 final getIt = GetIt.instance;

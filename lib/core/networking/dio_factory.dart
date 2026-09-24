@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:gamehunt/core/constants/api_constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -13,7 +14,7 @@ class DioFactory {
 
     _dio = Dio(
       BaseOptions(
-        baseUrl: 'https://api.rawg.io/api/',
+        baseUrl: ApiConstants.baseUrl,
         connectTimeout: duration,
         receiveTimeout: duration,
         sendTimeout: duration,

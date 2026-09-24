@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamehunt/core/constants/api_constants.dart';
 import 'package:gamehunt/core/local/cache_helper.dart';
 import 'package:gamehunt/core/routes/app_routes.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -12,18 +13,17 @@ void main() async {
   await CacheHelper.init();
 
   await Supabase.initialize(
-    url: 'https://spmbytnmjyhejftpdzen.supabase.co',
-    publishableKey: 'sb_publishable_g4nu16mULdx-743zRy6oxw_r1EdwGeh',
+    url: ApiConstants.supabaseUrl,
+    publishableKey: ApiConstants.supabaseAnonKey,
   );
 
   setupServiceLocator();
-// 1️ Check session and determine initial screen
+  // 1️ Check session and determine initial screen
   final session = Supabase.instance.client.auth.currentSession;
-  final String initialRoute = session != null ? AppRoutes.gamesScreen : AppRoutes.login;
+  final String initialRoute = session != null
+      ? AppRoutes.gamesScreen
+      : AppRoutes.login;
 
   // Pass initialRoute to GameHunt
-  runApp(GameHunt(
-    appRouter: AppRouter(),
-    initialRoute: initialRoute,
-  ));
+  runApp(GameHunt(appRouter: AppRouter(), initialRoute: initialRoute));
 }
